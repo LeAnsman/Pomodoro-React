@@ -17,23 +17,27 @@ function App() {
 
   //decrement length by one minute
   const decrementSessionLength = () => {
-    const newSessionLength = sessionLength - 15;
-    // prevent from going under 0
-    if (newSessionLength < 0) {
-      setSessionLength(0);
-    } else {
-      setSessionLength(newSessionLength);
+    if (intervalId === null) {
+      const newSessionLength = sessionLength - 30;
+      // prevent from going under 0
+      if (newSessionLength < 0) {
+        setSessionLength(0);
+      } else {
+        setSessionLength(newSessionLength);
+      }
     }
   };
 
   // increment length by one minute
   const incrementSessionLength = () => {
-    setSessionLength(sessionLength + 15);
+    if (intervalId === null) {
+      setSessionLength(sessionLength + 30);
+    }
   };
 
   //decrement length by one minute
   const decrementBreakLength = () => {
-    const newBreakLength = breakLength - 15;
+    const newBreakLength = breakLength - 30;
     // prevent from going under 0
     if (newBreakLength < 0) {
       setBreakLength(0);
@@ -42,9 +46,9 @@ function App() {
     }
   };
 
-  // increment length by 15 seconds
+  // increment length by 30 seconds
   const incrementBreakLength = () => {
-    setBreakLength(breakLength + 15);
+    setBreakLength(breakLength + 30);
   };
   return (
     <div className="App">
@@ -66,7 +70,9 @@ function App() {
 
       <LeftTime
         sessionLength={sessionLength}
+        setSessionLength={setSessionLength}
         breakLength={breakLength}
+        setBreakLength={setBreakLength}
         modalPop={modalPop}
         setModalPop={setModalPop}
         leftLength={leftLength}
@@ -75,14 +81,6 @@ function App() {
         setIsSession={setIsSession}
         intervalId={intervalId}
         setIntervalId={setIntervalId}
-      />
-      <ResetTime
-        setBreakLength={setBreakLength}
-        sessionLength={sessionLength}
-        setSessionLength={setSessionLength}
-        intervalId={intervalId}
-        setIntervalId={setIntervalId}
-        setLeftLength={setLeftLength}
       />
 
       <Modal

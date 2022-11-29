@@ -18,9 +18,9 @@ const ResetTime = ({
   };
 
   return (
-    <div className="flex justify-center p-5">
+    <div>
       <button
-        className="text-indigo-900 border-2 px-4 py-1 rounded-lg shadow-md border-purple-600 hover:border-transparent hover:text-white hover:bg-rose-600"
+        className="text-indigo-900 border-2 px-4 py-1 w-20 rounded-lg shadow-md border-purple-600 hover:border-transparent hover:text-white hover:bg-rose-600"
         onClick={resetHandler}
       >
         Reset

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import ResetTime from "./ResetTime";
 
 const LeftTime = ({
   sessionLength,
@@ -10,6 +11,8 @@ const LeftTime = ({
   setIsSession,
   intervalId,
   setIntervalId,
+  setSessionLength,
+  setBreakLength,
 }) => {
   // formating seconds in MM:SS
   const formatedLeftLength = new Date(leftLength * 1000)
@@ -69,16 +72,26 @@ const LeftTime = ({
         {formatedLeftLength}
       </h1>
 
-      <button
-        className={
-          isStarted
-            ? "text-indigo-900 border-2 px-4 py-1 rounded-lg shadow-md border-rose-600 hover:border-transparent hover:text-white hover:bg-rose-600 transition-all"
-            : "text-indigo-900 border-2 px-4 py-1 rounded-lg shadow-md border-purple-600 hover:border-transparent hover:text-white hover:bg-purple-600 transition-all"
-        }
-        onClick={startStopHandler}
-      >
-        {isStarted ? "Stop" : "Start"}
-      </button>
+      <div className="flex space-x-5">
+        <button
+          className={
+            isStarted
+              ? "text-indigo-900 border-2 px-4 py-1 w-20 rounded-lg shadow-md border-rose-600 hover:border-transparent hover:text-white hover:bg-rose-600 transition-all"
+              : "text-indigo-900 border-2 px-4 py-1 w-20 rounded-lg shadow-md border-purple-600 hover:border-transparent hover:text-white hover:bg-purple-600 transition-all"
+          }
+          onClick={startStopHandler}
+        >
+          {isStarted ? "Stop" : "Start"}
+        </button>
+        <ResetTime
+          setBreakLength={setBreakLength}
+          sessionLength={sessionLength}
+          setSessionLength={setSessionLength}
+          intervalId={intervalId}
+          setIntervalId={setIntervalId}
+          setLeftLength={setLeftLength}
+        />
+      </div>
     </div>
   );
 };
