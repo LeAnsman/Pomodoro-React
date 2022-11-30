@@ -7,8 +7,10 @@ const ResetTime = ({
   setIntervalId,
   setLeftLength,
   sessionLength,
+  setIsSession,
 }) => {
   const resetHandler = () => {
+    setIsSession(true);
     setSessionLength(25 * 60);
     setLeftLength(sessionLength);
     setBreakLength(5 * 60);

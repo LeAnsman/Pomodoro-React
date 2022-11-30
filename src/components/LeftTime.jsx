@@ -84,6 +84,7 @@ const LeftTime = ({
           {isStarted ? "Stop" : "Start"}
         </button>
         <ResetTime
+          setIsSession={setIsSession}
           setBreakLength={setBreakLength}
           sessionLength={sessionLength}
           setSessionLength={setSessionLength}

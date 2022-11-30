@@ -2,7 +2,6 @@ import { useState } from "react";
 import BreakTime from "./components/BreakTime";
 import LeftTime from "./components/LeftTime";
 import Modal from "./components/Modal";
-import ResetTime from "./components/ResetTime";
 import SessionTime from "./components/SessionTime";
 
 function App() {
