@@ -16,13 +16,18 @@ function App() {
 
   //decrement length by one minute
   const decrementSessionLength = () => {
+    // if the clock is stopped
     if (intervalId === null) {
-      const newSessionLength = sessionLength - 30;
-      // prevent from going under 0
-      if (newSessionLength < 0) {
-        setSessionLength(0);
+      if (isSession === true) {
+        const newSessionLength = sessionLength - 30;
+        // prevent from going under 1min
+        if (newSessionLength < 60) {
+          setSessionLength(60);
+        } else {
+          setSessionLength(newSessionLength);
+        }
       } else {
-        setSessionLength(newSessionLength);
+        alert("Can't modify session in break");
       }
     }
   };
@@ -30,7 +35,11 @@ function App() {
   // increment length by one minute
   const incrementSessionLength = () => {
     if (intervalId === null) {
-      setSessionLength(sessionLength + 30);
+      if (isSession === true) {
+        setSessionLength(sessionLength + 30);
+      } else {
+        alert("Can't modify session in break");
+      }
     }
   };
 
